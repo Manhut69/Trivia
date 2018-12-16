@@ -1,9 +1,5 @@
 package com.example.clintnieuwendijk.trivia;
 
-import android.util.Log;
-
-import org.json.JSONArray;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -25,7 +21,6 @@ public class Trivia implements Serializable {
             }
             answers.add(answerArray);
         }
-        Log.e("Questions", answers.toString());
     }
 
     public String getQuestion() {
@@ -58,7 +53,4 @@ public class Trivia implements Serializable {
             score++;
     }
 
-    public void postScore() {
-
-    }
 }

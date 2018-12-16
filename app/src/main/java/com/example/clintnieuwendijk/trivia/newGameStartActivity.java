@@ -11,18 +11,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class newGameStartActivity extends AppCompatActivity implements questionRequest.Callback {
 
-    private ArrayList<ArrayList<String>> questionList;
     private Boolean fetchingInProgress = false;
-    private Boolean questionsRequested = false;
     Spinner categorySpinner;
     Spinner difficultySpinner;
     HashMap<String, Integer> categoriesHashmap;
@@ -67,7 +62,14 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
             fetchingInProgress = true;
         }
 
-        if (questionsRequested) {
+        else {
+            Toast.makeText(this, "Fetching questions, one moment...", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void gotQuestion(ArrayList<ArrayList<String>> questionList) {
+        if (questionList.size() > 0) {
             Intent intent = new Intent(newGameStartActivity.this, triviaGameActivity.class);
             Trivia triviaGame = new Trivia(questionList);
             intent.putExtra("triviaQuestions", triviaGame);
@@ -79,28 +81,15 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
                 intent.putExtra("username", "none");
             }
             startActivity(intent);
-
-        }
-
-        else {
-            Toast.makeText(this, "Fetching questions, one moment...", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    public boolean gotQuestion(ArrayList<ArrayList<String>> questionList) {
-        this.questionList = questionList;
-        if (questionList.size() > 0) {
-            questionsRequested = true;
-            return true;
         }
         else {
-            return false;
+            gotQuestionError("Something went wrong, going back to the main menu...");
         }
     }
 
     @Override
     public void gotQuestionError(String message) {
-        Log.d("Something", "WentWrong");
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        startActivity(new Intent(newGameStartActivity.this, MainActivity.class));
     }
 }

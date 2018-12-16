@@ -14,16 +14,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class questionRequest implements Response.Listener<JSONObject>, Response.ErrorListener{
 
     Context context;
     Callback activity;
-    String difficulty, category;
+    private String difficulty, category;
     int amount;
 
-    public questionRequest(Context context, String category, String difficulty, int amount) {
+    questionRequest(Context context, String category, String difficulty, int amount) {
         this.context = context;
         this.category = category;
         this.difficulty = difficulty;
@@ -31,7 +30,7 @@ public class questionRequest implements Response.Listener<JSONObject>, Response.
     }
 
     public interface Callback {
-        boolean gotQuestion(ArrayList<ArrayList<String>> answerList);
+        void gotQuestion(ArrayList<ArrayList<String>> answerList);
         void gotQuestionError(String message);
     }
 
@@ -45,7 +44,9 @@ public class questionRequest implements Response.Listener<JSONObject>, Response.
         ArrayList<ArrayList<String>> answerList = new ArrayList<>();
         try {
             JSONArray questionJSON = (JSONArray) response.get("results");
-            Log.d("response.length", Integer.toString(response.length()));
+            if (response.length() == 0) {
+                activity.gotQuestionError("Array size is 0");
+            }
             for (int i = 0; i < questionJSON.length(); i++) {
                 ArrayList<String> answers = new ArrayList<>();
                 JSONObject fullQuestion = questionJSON.getJSONObject(i);
@@ -66,7 +67,7 @@ public class questionRequest implements Response.Listener<JSONObject>, Response.
         activity.gotQuestion(answerList);
     }
 
-    public void getQuestions(Callback activity) {
+    void getQuestions(Callback activity) {
         this.activity = activity;
         RequestQueue queue = Volley.newRequestQueue(context);
         String requestURL = "https://opentdb.com/api.php?amount=" + Integer.toString(amount) + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple";

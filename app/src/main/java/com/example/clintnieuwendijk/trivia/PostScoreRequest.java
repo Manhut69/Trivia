@@ -12,8 +12,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-
 public class PostScoreRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     Context context;

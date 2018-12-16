@@ -1,6 +1,7 @@
 package com.example.clintnieuwendijk.trivia;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,13 +19,14 @@ import java.util.ArrayList;
 
 public class highScoreAdapter extends ArrayAdapter<highScores> {
 
-    ArrayList<highScores> highScoreList;
+    private ArrayList<highScores> highScoreList;
 
-    public highScoreAdapter(Context context, int resource, ArrayList<highScores> highScoreList) {
+    highScoreAdapter(Context context, int resource, ArrayList<highScores> highScoreList) {
         super(context, resource, highScoreList);
         this.highScoreList = highScoreList;
     }
 
+    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {

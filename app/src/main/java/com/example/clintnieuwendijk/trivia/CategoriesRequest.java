@@ -19,12 +19,12 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
     Context context;
     Callback activity;
 
-    public CategoriesRequest(Context context) {
+    CategoriesRequest(Context context) {
         this.context = context;
     }
 
     public interface Callback {
-        boolean gotCategories(HashMap<String, Integer> categoriesMap);
+        void gotCategories(HashMap<String, Integer> categoriesMap);
         void gotCategoriesError(String message);
     }
 
@@ -49,7 +49,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
         }
     }
 
-    public void getCategories(Callback activity) {
+    void getCategories(Callback activity) {
         this.activity = activity;
         RequestQueue queue = Volley.newRequestQueue(context);
         String requestURL = "https://opentdb.com/api_category.php";

@@ -23,33 +23,28 @@ public class Trivia implements Serializable {
         }
     }
 
-    public String getQuestion() {
+    String getQuestion() {
         return questions.get(currentQuestionCount);
     }
 
-    public int getCurrentQuestionCount() {
+    int getCurrentQuestionCount() {
         return currentQuestionCount;
     }
 
-    public int getScore() {
+    int getScore() {
         return score;
     }
 
-    public ArrayList<String> getAnswers(){
+    ArrayList<String> getAnswers(){
         return answers.get(currentQuestionCount);
     }
 
-    public boolean gotoNextQuestion() {
+    boolean gotoNextQuestion() {
         currentQuestionCount++;
-        if (currentQuestionCount < questions.size()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return currentQuestionCount < questions.size();
     }
 
-    public void addScore() {
+    void addScore() {
             score++;
     }
 

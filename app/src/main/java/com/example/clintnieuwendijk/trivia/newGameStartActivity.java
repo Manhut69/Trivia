@@ -27,11 +27,8 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game_start);
 
-        ArrayList<String> categories = new ArrayList<>();
         categoriesHashmap = (HashMap<String, Integer>) getIntent().getSerializableExtra("categories");
-        for (String key : categoriesHashmap.keySet()) {
-            categories.add(key);
-        }
+        ArrayList<String> categories = new ArrayList<>(categoriesHashmap.keySet());
 
         categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
@@ -74,7 +71,7 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
             Trivia triviaGame = new Trivia(questionList);
             intent.putExtra("triviaQuestions", triviaGame);
             EditText usernameBox = findViewById(R.id.userNameText);
-            if (usernameBox.getText().toString() != ""){
+            if (!usernameBox.getText().toString().equals("")){
                 intent.putExtra("username", usernameBox.getText().toString());
             }
             else {

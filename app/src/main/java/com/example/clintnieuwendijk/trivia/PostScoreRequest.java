@@ -17,7 +17,7 @@ public class PostScoreRequest implements Response.Listener<JSONObject>, Response
     Context context;
     PostScoreRequest.Callback activity;
 
-    public PostScoreRequest(Context context) {
+    PostScoreRequest(Context context) {
         this.context = context;
     }
 
@@ -40,7 +40,7 @@ public class PostScoreRequest implements Response.Listener<JSONObject>, Response
         }
     }
 
-    public void getScore(Callback activity, String user, int score){
+    void getScore(Callback activity, String user, int score){
         this.activity = activity;
         RequestQueue queue = Volley.newRequestQueue(context);
         String requestURL = "https://ide50-manhut.c9users.io:8080/postscore?username=" + user + "&score=" + Integer.toString(score);

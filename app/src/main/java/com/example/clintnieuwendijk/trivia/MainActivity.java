@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.Dictionary;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements CategoriesRequest.Callback {
@@ -39,10 +38,9 @@ public class MainActivity extends AppCompatActivity implements CategoriesRequest
     }
 
     @Override
-    public boolean gotCategories(HashMap<String, Integer> categoriesMap) {
+    public void gotCategories(HashMap<String, Integer> categoriesMap) {
         this.categoriesMap = categoriesMap;
         categoriesRequested = true;
-        return true;
     }
 
     @Override

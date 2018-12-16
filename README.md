@@ -21,4 +21,4 @@ The other button on the main activity will go to the high score list, requesting
 ![Main activity](/data/screenshot0.jpg)
 ![prompt](/data/screenshot1.jpg)
 ![trivia game](/data/screenshot2.jpg)
-![high score list](/data/screenshot3.jpg)
+![high score list](/data/screenshot4.jpg)

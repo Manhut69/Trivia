@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class highScoreActivity extends AppCompatActivity implements PostScoreRequest.Callback{
 
+    // initialize activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class highScoreActivity extends AppCompatActivity implements PostScoreReq
         x.getScore(this, "user", -1);
     }
 
+    // callback for requesting the high scores
     @Override
     public void gotScore(JSONObject response) throws JSONException {
         JSONArray highScoreJSONArray = response.getJSONArray("database");
@@ -38,6 +40,7 @@ public class highScoreActivity extends AppCompatActivity implements PostScoreReq
         lv.setAdapter(highScoresArrayAdapter);
     }
 
+    // callback for failing to request the high scores
     @Override
     public void gotScoreError(String message) {
         Toast.makeText(this, "Error retrieving highscores, please try again later", Toast.LENGTH_SHORT).show();

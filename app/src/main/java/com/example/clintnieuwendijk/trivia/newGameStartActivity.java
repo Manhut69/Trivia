@@ -1,8 +1,8 @@
 package com.example.clintnieuwendijk.trivia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,6 +22,7 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
     Spinner difficultySpinner;
     HashMap<String, Integer> categoriesHashmap;
 
+    // initialize app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
 
     }
 
+    // start a game wih the given spinner values
     public void startGameActivity(View view) {
         if (!fetchingInProgress) {
             TextView numQuestions = findViewById(R.id.numQuestions);
@@ -64,6 +66,7 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
         }
     }
 
+    // callback for fetching questions
     @Override
     public void gotQuestion(ArrayList<ArrayList<String>> questionList) {
         if (questionList.size() > 0) {
@@ -84,6 +87,7 @@ public class newGameStartActivity extends AppCompatActivity implements questionR
         }
     }
 
+    // callback for failing to request questions
     @Override
     public void gotQuestionError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();

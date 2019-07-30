@@ -19,6 +19,11 @@ import java.util.ArrayList;
 
 public class highScoreAdapter extends ArrayAdapter<highScores> {
 
+    /*
+        A simple adapter for displaying the high scores in the app
+        It has a basic constructor, and a view binder.
+     */
+
     private ArrayList<highScores> highScoreList;
 
     highScoreAdapter(Context context, int resource, ArrayList<highScores> highScoreList) {

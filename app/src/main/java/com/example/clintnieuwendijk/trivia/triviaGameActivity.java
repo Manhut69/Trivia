@@ -71,16 +71,22 @@ public class triviaGameActivity extends AppCompatActivity implements PostScoreRe
             }
         }
         else {
+            for (int i = 0; i < 4; i++) {
+                btn = buttonList.get(i);
+                btn.setEnabled(false);
+            }
             postScore(trivia.getScore());
         }
     }
 
     public void postScore(int score){
         String username = getIntent().getStringExtra("username");
-        if (!username.equals("none")) {
-            PostScoreRequest x = new PostScoreRequest(this);
-            x.getScore(this, username, score);
+        Log.d("Finished", "I post score");
+        if (username.equals("none")) {
+            score = -1;
         }
+        PostScoreRequest x = new PostScoreRequest(this);
+        x.getScore(this, username, score);
     }
 
 
@@ -88,7 +94,7 @@ public class triviaGameActivity extends AppCompatActivity implements PostScoreRe
     public void gotScore(JSONObject response) {
         Log.d("Response get", response.toString());
         Intent intent = new Intent(triviaGameActivity.this, MainActivity.class);
-        intent.putExtra("Score", trivia.getScore());
+        intent.putExtra("score", trivia.getScore());
         startActivity(intent);
     }
 

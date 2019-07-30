@@ -1,6 +1,11 @@
 package com.example.clintnieuwendijk.trivia;
 
 class highScores {
+    /*
+        a simple highscore display class for the high score adapter
+        it has getters and a constructor to work with the highScoreAdapter class
+     */
+
     private String username;
     private String highscore;
 

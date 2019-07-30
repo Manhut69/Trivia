@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class Trivia implements Serializable {
 
+    /*
+        A trivia class that works with the trivia game activity
+        It requests questions and counts the score for the current quiz
+     */
+
     private ArrayList<String> questions;
     private ArrayList<ArrayList<String>> answers;
     private int currentQuestionCount = 0;

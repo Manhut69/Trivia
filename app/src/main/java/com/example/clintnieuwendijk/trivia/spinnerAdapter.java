@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 public class spinnerAdapter extends ArrayAdapter<String> {
 
+    /*
+        A simple spinner adapter for the new game activity.
+        It binds the view for the requested categories
+     */
+
     ArrayList<String> entries;
 
     public spinnerAdapter(Context context, int resource, ArrayList<String> entries) {

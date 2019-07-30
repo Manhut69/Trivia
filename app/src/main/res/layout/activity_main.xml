@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/mainActivityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -19,7 +19,7 @@
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/newGameButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -27,10 +27,17 @@
         android:text="New game" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/gotoHighScoreButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="highScoreClick"
         android:text="High Scores" />
+
+    <TextView
+        android:id="@+id/snackBarParent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0"
+        android:text="TextView" />
 </LinearLayout>

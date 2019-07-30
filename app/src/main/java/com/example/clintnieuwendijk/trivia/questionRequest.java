@@ -17,6 +17,11 @@ import java.util.ArrayList;
 
 public class questionRequest implements Response.Listener<JSONObject>, Response.ErrorListener{
 
+    /*
+        A volley request class for the trivia game
+        it requests the questions from the open trivia database and callbacks to the new game start activity.
+     */
+
     Context context;
     Callback activity;
     private String difficulty, category;

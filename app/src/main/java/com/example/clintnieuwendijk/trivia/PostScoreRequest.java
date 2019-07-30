@@ -14,6 +14,11 @@ import org.json.JSONObject;
 
 public class PostScoreRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
 
+    /*
+        A volley request class to work posting scores to a server
+        it posts or requests to a server.
+     */
+
     Context context;
     PostScoreRequest.Callback activity;
 

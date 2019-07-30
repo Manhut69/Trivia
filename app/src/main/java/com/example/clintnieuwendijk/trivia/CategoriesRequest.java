@@ -16,6 +16,12 @@ import java.util.HashMap;
 
 public class CategoriesRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
 
+    /*
+        A request class for JSON files from the open trivia db
+        the class requests all available categories from the database
+        it then callbacks to the activity
+     */
+
     Context context;
     Callback activity;
 
